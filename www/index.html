@@ -13,6 +13,7 @@
 	<!-- cordova script (this will be a 404 during development) -->
 	<script src="cordova.js"></script>
 	<script src="js/angular.min.js"></script>
+	<script src="js/angular-translate.min.js"></script>
 	<script src="js/angular-youtube-embed.js"></script>
 
 	<!-- your app's js -->
@@ -25,10 +26,10 @@
 
 	<!-- SECCION HOME -->
 
-	<nav class="top-bar">
+	<nav class="top-bar" ng-controller="searchResultsCtrl">
 		<div class="row">
 			<div class="small-offset-4">
-				<h2>Yify Movies</h2>
+				<h2>{{headline}}</h2>
 			</div>
 		</div>
 	</nav>
@@ -37,21 +38,19 @@
 
 		<div class="row">
 			<div class="small-12 columns">
-				<p class="intro-text">Encuentra la película que estás buscando en Yify</p>
-				<p>1. Escribe la película <br>2. Revisa los resultados <br>3. Da un toque a la película, baja el archivo .torrent para que puedas descargarla.</p>
+				<p class="intro-text">{{introtext}}</p>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 columns">
-				<input type="text" id="termino" ng-model="search.term" placeholder="Escribe el nombre de la película" name="termino" required />
+				<input type="text" id="termino" ng-model="search.term" placeholder="{{placeholder}}" name="termino" required />
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-12 columns">
-				<a href="javascript:void(0)" ng-click="recibirTerminos(search.term);" class="button success expand radius">Buscar la película!</a>
-				<p>{{search.term}}</p>
+				<a href="javascript:void(0)" ng-click="recibirTerminos(search.term);" class="button success expand radius">{{button_text}}</a>
 			</div>
 		</div>
 	</div>
@@ -60,17 +59,17 @@
 
  <!-- SECCION RESULTADOS DE BUSQUEDA -->
 
- 	<nav class="top-bar">
+ 	<nav class="top-bar" ng-controller="searchResultsCtrl">
 		<div class="row">
 			<div class="small-offset-4">
-				<h2>Resultados</h2>
+				<h2>{{search_headline}}</h2>
 			</div>
 		</div>
 	</nav>
 
 	<div ng-controller="searchResultsCtrl">
 
-		<button class="" ng-click="goBack()">Atrás</button>
+		<button class="" ng-click="goBack()">{{back}}</button>
 
 		<div class="row" ng-show="errorData.error">
 			<div class="small-12 columns">
@@ -113,27 +112,27 @@
 
  <!-- SECCION DE RESULTADO INDIVIDUAL -->
 
- 	<nav class="top-bar">
+ 	<nav class="top-bar" ng-controller="IndividualCtrl">
 		<div class="row">
 			<div class="small-offset-4">
-				<h2>Película</h2>
+				<h2>{{headline}}</h2>
 			</div>
 		</div>
 	</nav>
 
  	<div ng-controller="IndividualCtrl">
 
-		<button ng-click="goBack()" class=""> Atrás</button>
+		<button ng-click="goBack()" class=""> {{back}}</button>
 
 		<div class="movieData">
 
 			<div class="movieTitle">{{movieData.MovieTitle}}</div>
 
 			<div class="movieInfo">
-				<div>Calidad: <strong>{{movieData.Quality}}</strong></div>
-				<div>Idioma: <strong>{{movieData.Language}}</strong></div>
-				<div>Tamaño: <strong>{{movieData.Size}}</strong></div>
-				<div>Géneros:</div>
+				<div>{{quality}}: <strong>{{movieData.Quality}}</strong></div>
+				<div>{{language}}: <strong>{{movieData.Language}}</strong></div>
+				<div>{{size}}: <strong>{{movieData.Size}}</strong></div>
+				<div>{{genre}}:</div>
 				<div class="movieGenre movieGenre1">{{movieData.Genre1}}</div>
 				<div class="movieGenre movieGenre2">{{movieData.Genre2}}</div>
 			</div>
@@ -145,7 +144,7 @@
 
 		<div class="row">
 			<div class="small-12 columns">
-				<button id="show">Ver trailer</button>
+				<button id="show">{{trailer}}</button>
 			</div>
 			<div class="small-12 columns">
 				<youtube-video video-id="theBestVideo"></youtube-video>
@@ -158,7 +157,7 @@
 
 		<div class="row">
 			<div class="small-12 columns">
-				<a href="javascript:void(0)" ng-click="openUrl()" class="button expand success">Descargar archivo torrent</a>
+				<a href="javascript:void(0)" ng-click="openUrl()" class="button expand success">{{download}}</a>
 			</div>
 		</div>
 
