@@ -1,14 +1,14 @@
 
-var app = angular.module('yify', ['ngRoute','individual','searchs']);
+var app = angular.module('yify', ['individual','searchs']);
 
-app.run(function($rootScope) {
+app.run(function() {
 
 });
 
 
 //Todas las rutas para la aplicacion
 
-app.config(function($routeProvider) {
+app.config(function() {
 
 
 });
