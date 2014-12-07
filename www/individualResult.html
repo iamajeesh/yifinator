@@ -1,15 +1,8 @@
 
-<ion-view title="Datos de la película">
-
-  <ion-nav-buttons>
     <button ng-click="goBack()" class="button ion-chevron-left"> Atrás</button>
-    <!-- <button ng-click="">Trailer</button> -->
-  </ion-nav-buttons>
+   
 
-  <div>
-    <ion-content>
-      <div class="row">
-        <div class="col movieData">
+        <div class=" movieData">
           <div class="movieTitle">{{movieData.MovieTitle}}</div>
           <div class="movieInfo">
             <div>Calidad: <strong>{{movieData.Quality}}</strong></div>
@@ -20,10 +13,10 @@
             <div class="movieGenre movieGenre2">{{movieData.Genre2}}</div>
           </div>
         </div>
-        <div class="col movieImage">
+        <div class=" movieImage">
           <img src="{{movieData.LargeCover}}">
         </div>
-      </div>
+ 
       <div class="row">
       	<button id="show">Ver trailer</button>
       	<div class="hide-show">
@@ -31,27 +24,10 @@
       	</div>
       </div>
       <div class="row">
-        <div class="col movieDescription">{{movieData.LongDescription}}</div>
+        <div class=" movieDescription">{{movieData.LongDescription}}</div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="">
           <a href="javascript:void(0)" ng-click="openUrl()" class="button button-block button-balanced">Descargar archivo torrent</a>
         </div>
       </div>
-
-    </ion-content>
-
-  </div>
-</ion-view>
-
-<script type="text/javascript">
-
-	function prueba(){
-		console.log("mensaje");
-	}
-	
-	var id = document.getElementById("show");
-
-	id.addEventListener("click", prueba, false);
-
-</script>

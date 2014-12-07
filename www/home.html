@@ -1,24 +1,22 @@
-<ion-view title="Yify Movies">
-    <ion-content ng-controller="searchResultsCtrl">
-        <div class="row responsive-sm">
-            <div class="col">
-                <p class="intro-text">Encuentra la película que estás buscando en Yify</p>
-                <p>1. Escribe la película <br>2. Revisa los resultados <br>3. Da un toque a la película, baja el archivo .torrent para que puedas descargarla.</p>
+<div ng-controller="searchResultsCtrl">
+    <div class="">
+       <div class="">
+            <p class="intro-text">Encuentra la película que estás buscando en Yify</p>
+            <p>1. Escribe la película <br>2. Revisa los resultados <br>3. Da un toque a la película, baja el archivo .torrent para que puedas descargarla.</p>
+        </div>
+    </div>
+    <div class="">
+        <div class="">
+            <div class="">
+                <label class="">
+                    <input type="text" id="termino" ng-model="search.term" placeholder="Escribe el nombre de la película" name="termino" required />
+                </label>
             </div>
         </div>
-        <div class="row responsive-sm">
-            <div class="col">
-                <div class="list">
-                    <label class="item item-input">
-                        <input type="text" id="termino" ng-model="search.term" placeholder="Escribe el nombre de la película" name="termino" required />
-                    </label>
-                </div>
-            </div>
+    </div>
+    <div class="">
+        <div class="">
+            <a href="#/search" ng-click="recibirTerminos(search.term);" class="">Buscar la película!</a>
         </div>
-        <div class="row responsive-sm">
-            <div class="col">
-                <a href="#/search" ng-click="recibirTerminos(search.term);" class="button button-balanced button-block">Buscar la película!</a>
-            </div>
-        </div>
-     </ion-content>
-</ion-view>
+    </div>
+ </div>
