@@ -11,3 +11,4 @@ plugins/
 *.js~
 *.md~
 *.gitignore~
+ionic.project

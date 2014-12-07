@@ -1,18 +1,11 @@
+var individual = angular.module('individual',['youtube-embed']);
 
-
-var individual = angular.module('individual',[]);
-
-individual.controller('IndividualCtrl', function($scope,$location,$window,$rootScope,$http){
+individual.controller('IndividualCtrl', function($scope,$window,$rootScope,$http){
 
   $scope.recibirId = function(id){
      $rootScope.movieId = id;
   };
 
-  $scope.goBack = function(){
-    // $ionicNavBarDelegate.back();
-    $location.path("/search");
-  };
-  
   var movie = "";
 
   $scope.openUrl = function(){
@@ -26,6 +19,8 @@ individual.controller('IndividualCtrl', function($scope,$location,$window,$rootS
   $http.get(url).success(function(data){
     $scope.movieData = data;
     movie = $scope.movieData.TorrentUrl;
+    $scope.theBestVideo = $scope.movieData.YoutubeTrailerID;
   });
+
 
 });
