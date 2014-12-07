@@ -1,6 +1,5 @@
 var movePages = function () {
 	this.position = 0;
-  this.place = "";
 	//esta funcion nos permite desplazar una pagina de izquierda a derecha
 	this.slideToLeft = function (idPage) {
 		var page = document.getElementById(idPage);
