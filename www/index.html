@@ -9,6 +9,7 @@
     <script src="js/vendor/modernizr.js"></script>
 	<link href="css/style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/searchResults.css">
+	<link rel="stylesheet" href="css/navigation.css">
 
 	<!-- cordova script (this will be a 404 during development) -->
 	<script src="cordova.js"></script>
@@ -25,143 +26,149 @@
 <body ng-app="yify">
 
 	<!-- SECCION HOME -->
+	<section id="home">
+		<nav class="top-bar" ng-controller="searchResultsCtrl">
+			<div class="row">
+				<div class="small-offset-4">
+					<h2>{{headline}}</h2>
+				</div>
+			</div>
+		</nav>
 
-	<nav class="top-bar" ng-controller="searchResultsCtrl">
-		<div class="row">
-			<div class="small-offset-4">
-				<h2>{{headline}}</h2>
+		<div ng-controller="searchResultsCtrl">
+
+			<div class="row">
+				<div class="small-12 columns">
+					<p class="intro-text">{{introtext}}</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="small-12 columns">
+					<input type="text" id="termino" ng-model="search.term" placeholder="{{placeholder}}" name="termino" required />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="small-12 columns">
+					<a href="javascript:void(0);" onclick="moveIt.slideToLeft('home');" ng-click="recibirTerminos(search.term);" class="button success expand radius">{{button_text}}</a>
+				</div>
 			</div>
 		</div>
-	</nav>
-
-	<div ng-controller="searchResultsCtrl">
-
-		<div class="row">
-			<div class="small-12 columns">
-				<p class="intro-text">{{introtext}}</p>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 columns">
-				<input type="text" id="termino" ng-model="search.term" placeholder="{{placeholder}}" name="termino" required />
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 columns">
-				<a href="javascript:void(0)" ng-click="recibirTerminos(search.term);" class="button success expand radius">{{button_text}}</a>
-			</div>
-		</div>
-	</div>
+	</section>
 
  <!-- SECCION HOME -->
 
  <!-- SECCION RESULTADOS DE BUSQUEDA -->
-
- 	<nav class="top-bar" ng-controller="searchResultsCtrl">
-		<div class="row">
-			<div class="small-offset-4">
-				<h2>{{search_headline}}</h2>
-			</div>
-		</div>
-	</nav>
-
-	<div ng-controller="searchResultsCtrl">
-
-		<button class="" ng-click="goBack()">{{back}}</button>
-
-		<div class="row" ng-show="errorData.error">
-			<div class="small-12 columns">
-				<h3 class="error-msg">{{errorData.error}} :( </h3>
-				<br>
-				<button class="expand radius" ng-click="goBack()">¡Prueba otra vez!</button>
-			</div>
-		</div>
-
-
-		<div ng-repeat="result in resultMovies" class="bg">
-			<div class="row" ng-controller="IndividualCtrl">
-
-				<div class="small-5 columns">
-					<a href="" ng-click="recibirId(result.MovieID);">
-						<div class="box-image">
-							<img ng-src="{{result.CoverImage}}" />
-						</div>
-					</a>
+	<section id="search">
+	 	<nav class="top-bar" ng-controller="searchResultsCtrl">
+			<div class="row">
+				<div class="small-offset-4">
+					<h2>{{search_headline}}</h2>
 				</div>
+			</div>
+		</nav>
 
-				<div class="small-7 columns">
-					<section class="description">
-						<a href="" ng-click="recibirId(result.MovieID);">
-							<h3>{{result.MovieTitle}}</h3>
-							<p class="genero">#{{result.Genre}}</p>
-							<p>Quality: {{result.Quality}}</p>
-							<p>Size: {{result.Size}}</p>
+		<div ng-controller="searchResultsCtrl">
+
+			<button onclick="moveIt.comeBack('home');">{{back}}</button>
+
+			<div class="row" ng-show="errorData.error">
+				<div class="small-12 columns">
+					<h3 class="error-msg">{{errorData.error}} :( </h3>
+					<br>
+					<button class="expand radius" ng-click="goBack()">¡Prueba otra vez!</button>
+				</div>
+			</div>
+
+
+			<div ng-repeat="result in resultMovies" class="bg">
+				<div class="row" ng-controller="IndividualCtrl">
+
+					<div class="small-5 columns">
+						<a href="javascript:void(0);" onclick="moveIt.slideToLeft('search');" ng-click="recibirId(result.MovieID);">
+							<div class="box-image">
+								<img ng-src="{{result.CoverImage}}" />
+							</div>
 						</a>
-					</section>
+					</div>
+
+					<div class="small-7 columns">
+						<section class="description">
+							<a href="javascript:void(0);" onclick="moveIt.slideToLeft('search');" ng-click="recibirId(result.MovieID);">
+								<h3>{{result.MovieTitle}}</h3>
+								<p class="genero">#{{result.Genre}}</p>
+								<p>Quality: {{result.Quality}}</p>
+								<p>Size: {{result.Size}}</p>
+							</a>
+						</section>
+					</div>
+
 				</div>
 
 			</div>
-
 		</div>
-	</div>
+	</section>
 
 
  <!-- SECCION RESULTADOS DE BUSQUEDA -->
 
  <!-- SECCION DE RESULTADO INDIVIDUAL -->
+	<section id="individual">
+	 	<nav class="top-bar" ng-controller="IndividualCtrl">
+			<div class="row">
+				<div class="small-offset-4">
+					<h2>{{headline}}</h2>
+				</div>
+			</div>
+		</nav>
 
- 	<nav class="top-bar" ng-controller="IndividualCtrl">
+	 	<div ng-controller="IndividualCtrl">
+
+			<button onclick="moveIt.comeBack('search');" class="">{{back}}</button>
+
+			<div class="movieData">
+
+				<div class="movieTitle">{{movieData.MovieTitle}}</div>
+
+				<div class="movieInfo">
+					<div>{{quality}}: <strong>{{movieData.Quality}}</strong></div>
+					<div>{{language}}: <strong>{{movieData.Language}}</strong></div>
+					<div>{{size}}: <strong>{{movieData.Size}}</strong></div>
+					<div>{{genre}}:</div>
+					<div class="movieGenre movieGenre1">{{movieData.Genre1}}</div>
+					<div class="movieGenre movieGenre2">{{movieData.Genre2}}</div>
+				</div>
+
+				<div class=" movieImage">
+					<img src="{{movieData.LargeCover}}">
+				</div>
+			</div>
+
 		<div class="row">
-			<div class="small-offset-4">
-				<h2>{{headline}}</h2>
-			</div>
-		</div>
-	</nav>
 
- 	<div ng-controller="IndividualCtrl">
-
-		<button ng-click="goBack()" class=""> {{back}}</button>
-
-		<div class="movieData">
-
-			<div class="movieTitle">{{movieData.MovieTitle}}</div>
-
-			<div class="movieInfo">
-				<div>{{quality}}: <strong>{{movieData.Quality}}</strong></div>
-				<div>{{language}}: <strong>{{movieData.Language}}</strong></div>
-				<div>{{size}}: <strong>{{movieData.Size}}</strong></div>
-				<div>{{genre}}:</div>
-				<div class="movieGenre movieGenre1">{{movieData.Genre1}}</div>
-				<div class="movieGenre movieGenre2">{{movieData.Genre2}}</div>
-			</div>
-
-			<div class=" movieImage">
-				<img src="{{movieData.LargeCover}}">
-			</div>
-		</div>
-
-		<div class="row">
 			<div class="small-12 columns">
 				<button id="show">{{trailer}}</button>
 			</div>
+
 			<div class="small-12 columns">
 				<youtube-video video-id="theBestVideo"></youtube-video>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="small-12 columns movieDescription">{{movieData.LongDescription}}</div>
-		</div>
-
-		<div class="row">
-			<div class="small-12 columns">
-				<a href="javascript:void(0)" ng-click="openUrl()" class="button expand success">{{download}}</a>
+			<div class="row">
+				<div class="small-12 columns">
+					<div class="movieDescription">{{movieData.LongDescription}}</div>
+				</div>
 			</div>
-		</div>
 
-	</div>
+			<div class="row">
+				<div class="small-12 columns">
+					<a href="javascript:void(0)" ng-click="openUrl()" class="button expand success">{{download}}</a>
+				</div>
+			</div>
+
+		</div>
+	</section>
 
 
 

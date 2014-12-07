@@ -34,6 +34,4 @@ individual.controller('IndividualCtrl', function($scope,$window,$rootScope,$http
   $scope.openUrl = function(){
     var ref = $window.open(movie,'_system','location=no');
   };
-
-
 });

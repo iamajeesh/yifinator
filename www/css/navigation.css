@@ -1,0 +1,31 @@
+#home, #search, #individual {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-transition: all 1s ease;
+	   -moz-transition: all 1s ease;
+	     -o-transition: all 1s ease;
+			transition: all 1s ease;
+
+/*	-webkit-transform: translateZ(0);
+	   -moz-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		 -o-transform: translateZ(0);
+			transform: translateZ(0);*/
+
+}
+#home {
+	z-index: 3;
+	background-color: #fff;
+}
+#search {
+	z-index: 2;
+	background-color: #fff;
+}
+#individual {
+	z-index: 1;
+}
