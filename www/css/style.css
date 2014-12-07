@@ -5,6 +5,10 @@ body {
   font-size: 100%;
 }
 
+h2{
+	color: #fff;
+}
+
 .intro-text{
 	font-size: 1em;
 }
@@ -16,6 +20,10 @@ body {
 
 .hide-show{
 	display: none;
+}
+
+iframe{
+	width: 100%;
 }
 
 @media (min-width: 1200px){
