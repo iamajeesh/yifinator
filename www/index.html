@@ -4,6 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 	<title></title>
+
+	<link rel="stylesheet" href="css/foundation.min.css" />
+    <script src="js/vendor/modernizr.js"></script>
 	<link href="css/style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/searchResults.css">
 
@@ -22,23 +25,34 @@
 
 	<!-- SECCION HOME -->
 
+	<nav class="top-bar">
+		<div class="row">
+			<div class="small-offset-4">
+				<h2>Yify Movies</h2>
+			</div>
+		</div>
+	</nav>
+
 	<div ng-controller="searchResultsCtrl">
 
-		<div class="">
-			<p class="intro-text">Encuentra la película que estás buscando en Yify</p>
-			<p>1. Escribe la película <br>2. Revisa los resultados <br>3. Da un toque a la película, baja el archivo .torrent para que puedas descargarla.</p>
+		<div class="row">
+			<div class="small-12 columns">
+				<p class="intro-text">Encuentra la película que estás buscando en Yify</p>
+				<p>1. Escribe la película <br>2. Revisa los resultados <br>3. Da un toque a la película, baja el archivo .torrent para que puedas descargarla.</p>
+			</div>
 		</div>
 
-		</div>
-
-		<div class="">
-			<label class="">
+		<div class="row">
+			<div class="small-12 columns">
 				<input type="text" id="termino" ng-model="search.term" placeholder="Escribe el nombre de la película" name="termino" required />
-			</label>
+			</div>
 		</div>
 
-		<div class="">
-			<a href="#/search" ng-click="recibirTerminos(search.term);" class="">Buscar la película!</a>
+		<div class="row">
+			<div class="small-12 columns">
+				<a href="javascript:void(0)" ng-click="recibirTerminos(search.term);" class="button success expand radius">Buscar la película!</a>
+				<p>{{search.term}}</p>
+			</div>
 		</div>
 	</div>
 
@@ -46,42 +60,52 @@
 
  <!-- SECCION RESULTADOS DE BUSQUEDA -->
 
-	<button class="" ng-click="goBack()"> Atrás</button>
-
+ 	<nav class="top-bar">
+		<div class="row">
+			<div class="small-offset-4">
+				<h2>Resultados</h2>
+			</div>
+		</div>
+	</nav>
 
 	<div ng-controller="searchResultsCtrl">
-		<div class="" ng-show="errorData.error">
-			<h3 class="error-msg">{{errorData.error}} :( </h3>
-			<br>
-			<button class="" ng-click="goBack()">¡Prueba otra vez!</button>
-		</div>
-	</div>
 
+		<button class="" ng-click="goBack()">Atrás</button>
 
-	<div ng-repeat="result in resultMovies" class="bg">
-		<div class="" ng-controller="IndividualCtrl">
-
-			<div class="">
-				<a href="#/individual" ng-click="recibirId(result.MovieID);">
-					<div class="box-image">
-						<img ng-src="{{result.CoverImage}}" />
-					</div>
-				</a>
+		<div class="row" ng-show="errorData.error">
+			<div class="small-12 columns">
+				<h3 class="error-msg">{{errorData.error}} :( </h3>
+				<br>
+				<button class="expand radius" ng-click="goBack()">¡Prueba otra vez!</button>
 			</div>
+		</div>
 
-			<div class="">
-				<section class="description">
-					<a href="#/individual" ng-click="recibirId(result.MovieID);">
-						<h3>{{result.MovieTitle}}</h3>
-						<p class="genero">#{{result.Genre}}</p>
-						<p>Quality: {{result.Quality}}</p>
-						<p>Size: {{result.Size}}</p>
+
+		<div ng-repeat="result in resultMovies" class="bg">
+			<div class="row" ng-controller="IndividualCtrl">
+
+				<div class="small-5 columns">
+					<a href="" ng-click="recibirId(result.MovieID);">
+						<div class="box-image">
+							<img ng-src="{{result.CoverImage}}" />
+						</div>
 					</a>
-				</section>
+				</div>
+
+				<div class="small-7 columns">
+					<section class="description">
+						<a href="" ng-click="recibirId(result.MovieID);">
+							<h3>{{result.MovieTitle}}</h3>
+							<p class="genero">#{{result.Genre}}</p>
+							<p>Quality: {{result.Quality}}</p>
+							<p>Size: {{result.Size}}</p>
+						</a>
+					</section>
+				</div>
+
 			</div>
 
 		</div>
-
 	</div>
 
 
@@ -89,45 +113,66 @@
 
  <!-- SECCION DE RESULTADO INDIVIDUAL -->
 
-
-	<button ng-click="goBack()" class="button ion-chevron-left"> Atrás</button>
-
-
-	<div class=" movieData">
-		<div class="movieTitle">{{movieData.MovieTitle}}</div>
-		<div class="movieInfo">
-			<div>Calidad: <strong>{{movieData.Quality}}</strong></div>
-			<div>Idioma: <strong>{{movieData.Language}}</strong></div>
-			<div>Tamaño: <strong>{{movieData.Size}}</strong></div>
-			<div>Géneros:</div>
-			<div class="movieGenre movieGenre1">{{movieData.Genre1}}</div>
-			<div class="movieGenre movieGenre2">{{movieData.Genre2}}</div>
+ 	<nav class="top-bar">
+		<div class="row">
+			<div class="small-offset-4">
+				<h2>Película</h2>
+			</div>
 		</div>
-	</div>
+	</nav>
 
-	<div class=" movieImage">
-		<img src="{{movieData.LargeCover}}">
-	</div>
+ 	<div ng-controller="IndividualCtrl">
 
-	<div class="">
-		<button id="show">Ver trailer</button>
-		<div class="hide-show">
-		<youtube-video video-id="theBestVideo"></youtube-video>
+		<button ng-click="goBack()" class=""> Atrás</button>
+
+		<div class="movieData">
+
+			<div class="movieTitle">{{movieData.MovieTitle}}</div>
+
+			<div class="movieInfo">
+				<div>Calidad: <strong>{{movieData.Quality}}</strong></div>
+				<div>Idioma: <strong>{{movieData.Language}}</strong></div>
+				<div>Tamaño: <strong>{{movieData.Size}}</strong></div>
+				<div>Géneros:</div>
+				<div class="movieGenre movieGenre1">{{movieData.Genre1}}</div>
+				<div class="movieGenre movieGenre2">{{movieData.Genre2}}</div>
+			</div>
+
+			<div class=" movieImage">
+				<img src="{{movieData.LargeCover}}">
+			</div>
 		</div>
-	</div>
 
-	<div class="">
-		<div class=" movieDescription">{{movieData.LongDescription}}</div>
-	</div>
-	<div class="">
-		<div class="">
-			<a href="javascript:void(0)" ng-click="openUrl()" class="button button-block button-balanced">Descargar archivo torrent</a>
+		<div class="row">
+			<div class="small-12 columns">
+				<button id="show">Ver trailer</button>
+			</div>
+			<div class="small-12 columns">
+				<youtube-video video-id="theBestVideo"></youtube-video>
+			</div>
 		</div>
+
+		<div class="row">
+			<div class="small-12 columns movieDescription">{{movieData.LongDescription}}</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 columns">
+				<a href="javascript:void(0)" ng-click="openUrl()" class="button expand success">Descargar archivo torrent</a>
+			</div>
+		</div>
+
 	</div>
 
 
 
  <!-- SECCION DE RESULTADO INDIVIDUAL -->
+
+	<script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
 
 </body>
 </html>
