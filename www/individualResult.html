@@ -3,6 +3,7 @@
 
   <ion-nav-buttons>
     <button ng-click="goBack()" class="button ion-chevron-left"> Atrás</button>
+    <!-- <button ng-click="">Trailer</button> -->
   </ion-nav-buttons>
 
   <div>
@@ -24,6 +25,12 @@
         </div>
       </div>
       <div class="row">
+      	<button id="show">Ver trailer</button>
+      	<div class="hide-show">
+      		<youtube-video video-id="theBestVideo"></youtube-video>
+      	</div>
+      </div>
+      <div class="row">
         <div class="col movieDescription">{{movieData.LongDescription}}</div>
       </div>
       <div class="row">
@@ -33,5 +40,18 @@
       </div>
 
     </ion-content>
+
   </div>
 </ion-view>
+
+<script type="text/javascript">
+
+	function prueba(){
+		console.log("mensaje");
+	}
+	
+	var id = document.getElementById("show");
+
+	id.addEventListener("click", prueba, false);
+
+</script>
