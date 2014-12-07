@@ -22,36 +22,42 @@ var english = {
 }
 
 var spanish = {
-	INICIO: {
-
+	HOME: {
+		HEADLINE: 'Yify Movies',
+		INTROTEXT: 'Encuentra las mejores películas en Yify',
+		PLACEHOLDER: 'Escribe el nombre de la película',
+		BUTTON_TEXT: 'Buscar película!'
 	},
-	BUSQUEDA: {
-
+	SEARCH: {
+		HEADLINE: 'Resultados',
+		BACK: 'Atrás',
 	},
-	PELICULA: {
-
+	INDIVIDUAL: {
+		BACK: 'Atrás',
+		HEADLINE: 'Película',
+		QUALITY: 'Calidad',
+		LANGUAGE: 'Idioma',
+		SIZE: 'Tamaño',
+		GENRE: 'Género',
+		TRAILER: 'Ver trailer',
+		DOWNLOAD: 'Descargar archivo torrent'
 	}
 }
 
 
 var app = angular.module('yify', ['individual','searches','pascalprecht.translate']);
 
-app.run(function($rootScope) {
 
-});
-
-
-//Todas las rutas para la aplicacion
-
-app.config(['$translateProvider', function($translateProvider) {
+app.config(function($translateProvider) {
 
 	/*AGREGAR LLAVE PARA TRADUCCIONES EN INGLES*/
 	$translateProvider
-	  .translations('en', english)
-	  .preferredLanguage('en');
+	  .translations('en', english);
 
 	/*AGREGAR LLAVE PARA TRADUCCIONES EN ESPANOL*/
-	/*$translateProvider
-	  .translations('es', spanish);*/
+	$translateProvider
+	  .translations('es', spanish);
 
-}]);
+	$translateProvider.preferredLanguage('en');
+
+});
