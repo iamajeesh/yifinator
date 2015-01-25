@@ -1,4 +1,4 @@
-#Yifynator
+#Yifynator Modified
 
 Aplicación para encontrar películas dentro de Yify Torrents
 
